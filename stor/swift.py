@@ -681,7 +681,7 @@ class SwiftPath(OBSPath):
         except AttributeError:
             pass
 
-        with tempfile.NamedTemporaryFile() as fp:
+        with tempfile.NamedTemporaryFile(mode='wt') as fp:
             fp.write(content)
             fp.flush()
             suo = OBSUploadObject(fp.name, object_name=self.resource)
