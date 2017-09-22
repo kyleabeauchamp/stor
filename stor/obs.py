@@ -287,8 +287,6 @@ class OBSFile(object):
     @property
     def stream_cls(self):
         """The class used for the IO stream"""
-        if sys.version_info >= (3, 0):
-            return six.BytesIO
         return six.BytesIO if self.mode in ('rb', 'wb') else six.StringIO
 
     @cached_property
