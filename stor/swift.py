@@ -677,11 +677,11 @@ class SwiftPath(OBSPath):
                 `SwiftPath.upload`
         """
         try:
-            content = content.decode()
+            content = content.encode('utf8')
         except AttributeError:
             pass
 
-        with tempfile.NamedTemporaryFile(mode='wt') as fp:
+        with tempfile.NamedTemporaryFile() as fp:
             fp.write(content)
             fp.flush()
             suo = OBSUploadObject(fp.name, object_name=self.resource)
