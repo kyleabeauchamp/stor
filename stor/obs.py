@@ -295,7 +295,7 @@ class OBSFile(object):
     def _buffer(self):
         "Cached buffer of data read from or to be written to Object Storage"
         if self.mode in ('r', 'rb'):
-            return self.stream_cls(self._path.read_object())
+            return self.stream_cls(self._path.read_object().decode())
         elif self.mode in ('w', 'wb'):
             return self.stream_cls()
         else:

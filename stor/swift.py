@@ -676,6 +676,11 @@ class SwiftPath(OBSPath):
             **swift_upload_args: Keyword arguments to pass to
                 `SwiftPath.upload`
         """
+        try:
+            content = content.decode()
+        except AttributeError:
+            pass
+
         with tempfile.NamedTemporaryFile() as fp:
             fp.write(content)
             fp.flush()
